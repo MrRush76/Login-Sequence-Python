@@ -1,36 +1,36 @@
-import time #imports the time package
+import time #imports the time package A package contains third-party that can be imported and used throught the code 
 import sys #imports the "sys" package
-from random import * # imports "*" from the "random" package 
+from random import * # imports "*" from the "random" package "from" imports selected function's from the package
 import os # imports the os package 
 from time import sleep  # imports the sleep module from the time package
-def recoveryoptions(): # defines a function called "recoveryoptions "
-    print("You are going to be asked 5 questions.... These will be your recovery options if you forget your password") # prints "print("You are going to be asked 5 questions.... These will be your recovery options if you forget your password")"
+def recoveryoptions(): # defines a function called "recoveryoptions " A function is a reusable bit of code that can be called multiple times throughout the program and can have variables passed into it. A print function displays a string to the terminal
+    print("You are going to be asked 5 questions.... These will be your recovery options if you forget your password") # this is a print function it prints to the terminal what is inside it the "" speechmarks declare anything inside as a string
     global recoveryoptions1  # {
     global recoveryoptions2  #  
     global recoveryoptions3  #
     global recoveryoptions4  #
-    global recoveryoptions5  # makes all these variables global}     
-    recoveryoptions1 = str(input("What is your Favourite Colour?\n")) # defines "recoveryoptions1" as a user input
+    global recoveryoptions5  # mkes these variables global. Global means to make the variable able to be used outside the function it is created in   
+    recoveryoptions1 = str(input("What is your Favourite Colour?\n")) # defines "recoveryoptions1" as a user input. A varibale is a type of storage where a valubale can be stored to a name in this example the name is "recoveryoptions1" and it's value is an input which means the user types something in following the prompt which is defined inside the input function. The "str" means that anything inside is defined as a string(a sequence of characters)
     recoveryoptions2 = str(input("What is your Favourite Food?\n")) # defines "recoveryoptions2" as a user input
     recoveryoptions3 = str(input("Name a school teacher you once had?\n")) # defines "recoveryoptions3" as a user input
     recoveryoptions4 = str(input("What is your favourite subject?\n")) # defines "recoveryoptions4" as a user input
     recoveryoptions5 = str(input("What is your facourite number?\n")) # defines "recoveryoptions5" as a user input
     print("Thank you for answering these questions....")#print function 
-    file = open("passwordrecovery.txt" , "w") # opens the text file in write mode 
-    file.write(recoveryoptions1) #{
+    file = open("passwordrecovery.txt" , "w") # "open" is a function which opens a text file to be used in the program. the open function takes two attributes the text file it is opening "untitled.txt" and how it is opening it. In this case we are using "W" because we are opening to write to it . The data from this textfile is then stored in the variable "file"
+    file.write(recoveryoptions1) #{ 
     file.write("\n")
     file.write(recoveryoptions2)
     file.write("\n")
     file.write(recoveryoptions3)
-    file.write("\n")
+    file.write("\n")  # "\n" is a symbol inside a string that goes to a new line 
     file.write(recoveryoptions4)
     file.write("\n")
-    file.write(recoveryoptions5) # writes all the declared variables to the textfile on different lines 
-    os.system("clear||cls") # clears the terminal 
+    file.write(recoveryoptions5) # ".write()" writes anything to the file that is inside the brackets 
+    os.system("clear||cls") # "os" declares the package the function comes from ("clear||cls") clears the  
 def changerecovery(): # defines a function called "changerecovery"
     print_slow("Would you like to change your Recovery Options? (Y/N)\n") # print function
     ans = input() # variable called "ans" takes input 
-    if ans == "y" or "Y": # if statemnt checks if the variable ans is "y" or "Y"
+    if ans == "y" or ans == "Y": # An if statement is a logic gate which runs the code indented inside it if the parameters it says are met. The operators used or "==" that checks if the two variables hold the same data. and the or operator makes it so that the if statement will run if either of the two things run. 
         recoveryoptions() # runs the "recoveryoptions" function
 def changepassword(): # defines a function called "changepassword"
     os.system("clear||cls") # clears the terminal
@@ -41,23 +41,23 @@ def changepassword(): # defines a function called "changepassword"
     if previouspassword1 == previouspassword: #if statement checks if "previouspassword" and "previouspassword1" are the same thing
         print_slow("Now enter Your New Password: ") # print function
         newpassword1 = input() # defines a variable called "newpassword1" as an input 
-        passwordlist = [] # makes an empty list called "passwordlist"
-        f1 = open("untitled.txt" , "r") # opens the file "untitled.txt" in read mode as a variable - "f1" 
-        for i in range(10): # for looop iterates 10 times
-            f1line = f1.readline() # reads the line of code 
+        passwordlist = [] # the square brackets make the variable into a list, a list is a variable which stores many diferent values that can be found and used by there index each value has an index the first index starts out "0"
+        f1 = open("untitled.txt" , "r") # opens the file "untitled.txt" in read mode as a variable - "f1" this variable is used for looking at the file 
+        for i in range(10): # A for loop is a loop that runs however many times is declared inside the brackets in this case 10
+            f1line = f1.readline() # this reads the line of code it is on 
             stripf1line = f1line.strip("\n") # strips it of its new line character 
             splitf1line = stripf1line.split(",") # splits it by the comma 
             passwordlist.append(splitf1line) # adds the line to the list "passwordlist"
         f1.close() # closes the file 
-        passwordlistnosublist = []   #makes a new list called "passwordlistnosublist"
+        passwordlistnosublist = []  # makes a new list called "passwordlistnosublist"
         for i in(passwordlist): # for loop iterates as many times as how long the list "passwordlist" is 
             passwordlistnosublist += i # adds to the list "passwordlistnosublist" the current item in the list "passwordlist"
         passwordpos = passwordlistnosublist.index(previouspassword) # defines the variable "passwordpos" as the index of the string stored in the variable "previouspassword"
         passwordlistnosublist[passwordpos] = newpassword1 #changes the item in the list "passwordlistnosublist" t the index that is stored in the variavle "passwordpos" to the string stored in the variable "newpassword1" 
         f1 = open("untitled.txt" , "w") # opens the file "untitled.txt" in write mode in the variable "f1"
-        while("" in passwordlistnosublist): # while loop runs while there are still empty places in the list "passwordlistnosublist"
+        while("" in passwordlistnosublist): # While loop - A while loop is a loop that runs until the parameters inside it are not met. In this case it runs when there are still empty spaces in the list 
             passwordlistnosublist.remove("") # removes whitespace from the list "passwordlistnosublist"
-        for i in range(0, len(passwordlistnosublist), 2): # for loop iterates from 0 to to the length of the list "passwordlistnosublist" and increases in increments of 2
+        for i in range(0, len(passwordlistnosublist), 2): # for loop iterates from 0 to to the length of the list "passwordlistnosublist" and increases in increments of 2. This for loop takes 3 parameters: The first two are the starting number it runs through and the second one is the one it runs up to. The last one is what the for loop increments in 
             f1.write(",".join(passwordlistnosublist[i:i+2]) + "\n") # writes to the file the item in "passwordlistnosublist" followed by a comma then the next item and then goes to a new line
         print("Password Changed Successfully... ") # print function
     else: # else block
@@ -74,7 +74,7 @@ def passwordrecovery():
         stripline = line.strip("\n") # removes its new line function
         questionslist.append(stripline) # appends to the list "questionslist" with the line "stripline"
     questionsright = 0 # defines the variable "questionsright" and assigns "0" to it 
-    x =randint(1,5) # defines a variable called "x" that picks a random number between 1 and 5 
+    x =randint(1,5) # defines a variable called "x" that picks a random number between 1 and 5 sing the package random . 
     if x  ==  1: # if statement checks if x is equal to 1 
         recoveryoptions1question = str(input("What is your Favourite Colour?\n")) # defines variable "recoveryoptions1question as a string input"
         if recoveryoptions1question == questionslist[0]: # if statement checks if "recoveryoptions1question" is equal to the item in index "0" in the list "questionslist"
@@ -145,7 +145,7 @@ def passwordrecovery():
 #{
 def print_slow(str): 
   for char in str: 
-    time.sleep(.0001)
+    time.sleep(0.08)
     sys.stdout.write(char)
     sys.stdout.flush()             #   all of this code is optional}  it imports the sys package and defines a nw function that iterates and prints each character of a string one by one instead of all at once
   return ""
@@ -189,7 +189,7 @@ def signup():# defines a new function called "signup"
             valid = False #sets the boolean variable "valid" to "False"
         if not any(characters.isupper() for characters in password): # if statement checks if there are no upper case characters in the string variable "password"
             print_slow('Password must have at least one uppercase character\n') #prints "Password must have at least one uppercase character" and goes to a new line 
-            valid = False #sets the boolean variable "valid" to "False"
+            valid = False #sets the boolean variable "valid" to "False". A boolean variable can only be set to True or False
         if not any(characters.islower() for characters in password): # if statement chcks if there are no lower case characters in the string variable "password"
             print_slow('Password must have at least one lowercase character\n') # prints "Password must have at least one lowercase character" and goes to a new line 
             valid = False #sets the boolean variable "valid" to "False" 
@@ -226,9 +226,9 @@ def loginsequence(): # defines a new function called "loginsequence"
     decision = input(print_slow("Please select an option.... \n")) # prompts the user with an input with the text "Please select an option...." and then assigns it to the variable "decision"
     if decision == "1":  # if statemnt checks if "decision" = "1"
         login() # runs the login function
-    elif decision == "2": # if statemnt checks if "decision" = "2"
+    elif decision == "2": # elif statemnt checks if "decision" = "2". ELif is like a if function but it goes after the first if statement. You cant have two if statements in a row only an if and an elif.
         signup() # urns the signup function
-    elif decision == "3": # if statemnt checks if "decision" = "3"
+    elif decision == "3": # elif statemnt checks if "decision" = "3"
         passwordrecovery()
     elif decision == "4":
         changepassword()
@@ -236,7 +236,7 @@ def loginsequence(): # defines a new function called "loginsequence"
         changerecovery()
     elif decision == "6":
         exit()
-    else: # if none of the previous happen 
+    else: # if none of the previous happen. Else is a statement that if none of the if or elif statements happen then this runs 
         print_slow("ERROR") # prints "ERROR"
         loginsequence() # runs the function "loginsequence"
 loginsequence() # runs the function "loginsequence"
