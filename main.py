@@ -229,7 +229,10 @@ def loginsequence(): # defines a new function called "loginsequence"
     elif decision == "2": # elif statemnt checks if "decision" = "2". ELif is like a if function but it goes after the first if statement. You cant have two if statements in a row only an if and an elif.
         signup() # urns the signup function
     elif decision == "3": # elif statemnt checks if "decision" = "3"
-        passwordrecovery()
+        if os.path.getsize("passwordrecovery.txt") == 0:
+            recoveryoptions()
+        else:
+            passwordrecovery()
     elif decision == "4":
         changepassword()
     elif decision == "5":
